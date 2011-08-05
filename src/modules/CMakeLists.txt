@@ -91,6 +91,7 @@ ADD_LIBRARY(modules
     ipfix/IpfixRawdirWriter.cpp
     ipfix/TemplateBuffer.cpp
     ipfix/IpfixDbReader.cpp
+    ipfix/IpfixFbWriter.cpp
     ipfix/IpfixDbWriter.cpp
     ipfix/IpfixDbWriterPg.cpp
     ipfix/IpfixRecordDestination.cpp
