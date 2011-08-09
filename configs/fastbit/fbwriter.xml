@@ -78,6 +78,7 @@
 	
 	<ipfixFbWriter id="4">
 	  <directory>fbdb</directory>
+	  <maxCol>2048</maxCol>
 	</ipfixFbWriter>
 			
 	<ipfixPrinter id="5">

@@ -22,7 +22,6 @@
 
 #ifndef IPFIXFBWRITER_H
 #define IPFIXFBWRITER_H
-#define __STDC_LIMIT_MACROS
 
 #include "IpfixDbCommon.hpp"
 #include "IpfixRecordDestination.h"
@@ -54,7 +53,7 @@ class IpfixFbWriter
     IpfixRecord::SourceID srcId; // default SourceID
     
   private:
-    static const uint32_t MAX_COLUMNS = UINT32_MAX;
+    static const uint32_t MAX_COLUMNS;
     const char* fastbitDir; // directory holding the fastbit data
     ibis::tablex* tx; // expandable table
     ibis::table* tb; // readable table
