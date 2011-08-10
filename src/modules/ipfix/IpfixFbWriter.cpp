@@ -43,7 +43,8 @@ using namespace std;
  *  Compare two source IDs and check if exporter is the same (i.e., same IP address and observationDomainId
  *  FIXME Missing!
  */
-bool IpfixFbWriter::equalExporter() {
+bool IpfixFbWriter::equalExporter() 
+{
   return true;
 }
 
@@ -51,7 +52,8 @@ bool IpfixFbWriter::equalExporter() {
  *  Set the Partition to operate on or create a new one if needed
  *  FIXME Missing!
  */
-int IpfixFbWriter::setCurrentPartition() {
+int IpfixFbWriter::setCurrentPartition() 
+{
   return 1;
 }
 
@@ -59,7 +61,8 @@ int IpfixFbWriter::setCurrentPartition() {
  *  Create a new Partion
  *  FIXME Missing!
  */
-int IpfixFbWriter::createPartition() {
+int IpfixFbWriter::createPartition() 
+{
   return 1;
 }
 
@@ -67,7 +70,8 @@ int IpfixFbWriter::createPartition() {
  *  Write current data to directory
  *  FIXME Missing!
  */
-int IpfixFbWriter::writeToDir() {
+int IpfixFbWriter::writeToDir() 
+{
   return 1;
 }
 
@@ -75,7 +79,8 @@ int IpfixFbWriter::writeToDir() {
  *  Handle a data record to save to table
  *  FIXME Missing!
  */
-void IpfixFbWriter::processDataRecord() { 
+void IpfixFbWriter::processDataRecord() 
+{ 
 
 }
 
@@ -83,7 +88,8 @@ void IpfixFbWriter::processDataRecord() {
  *	Returns the id of the exporter table entry or 0 in the case of an error
  *  FIXME Missing!
  */
-int IpfixFbWriter::getExporterID() {
+int IpfixFbWriter::getExporterID() 
+{
   return 1;
 }
 
@@ -92,7 +98,8 @@ int IpfixFbWriter::getExporterID() {
  *	Get data of the record is given by the IPFIX_TYPEID
  *  FIXME Missing!
  */
-uint64_t IpfixFbWriter::getData() {
+uint64_t IpfixFbWriter::getData() 
+{
   return 1;
 }
 
@@ -102,7 +109,8 @@ uint64_t IpfixFbWriter::getData() {
  *  called on Data Record arrival
  *  FIXME Missing!
  */
-void IpfixFbWriter::onDataRecord(IpfixDataRecord* record) {
+void IpfixFbWriter::onDataRecord(IpfixDataRecord* record) 
+{
 
 }
 
@@ -111,7 +119,11 @@ void IpfixFbWriter::onDataRecord(IpfixDataRecord* record) {
  *  FIXME Missing!
  */ 
 
-IpfixFbWriter::IpfixFbWriter(const char* dir, const uint32_t maxColumns, uint16_t observationDomainId) {
+IpfixFbWriter::IpfixFbWriter( const char* dir, 
+                              const uint32_t maxColumns, 
+                              uint16_t observationDomainId,
+                              vector<string> rows)
+{
   
 }
 

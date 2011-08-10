@@ -29,8 +29,6 @@
 #include "common/ipfixlolib/ipfixlolib.h"
 #include "ibis.h"
 #include <netinet/in.h>
-#include <stdint.h>
-#include <limits.h> 
 
 
 #define EXPORTERID 0
@@ -45,7 +43,8 @@ class IpfixFbWriter
   public:
     IpfixFbWriter(const char* dir, 
                   const uint32_t maxColumns,
-                  uint16_t observationDomainId);
+                  uint16_t observationDomainId,
+                  vector<string> rows);
     ~IpfixFbWriter();
     
     void onDataRecord(IpfixDataRecord* record);

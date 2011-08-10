@@ -23,17 +23,12 @@
 
 #ifdef FB_SUPPORT_ENABLED
 
-#define __STDC_LIMIT_MACROS
-
 #include <core/XMLElement.h>
 #include <core/Cfg.h>
 
 #include "modules/ipfix/IpfixFbWriter.hpp"
 
 #include <string>
-#include <stdint.h>
-#include <limits.h> 
-
 
 using namespace std;
 
@@ -55,7 +50,9 @@ protected:
 	const char* directory; /**< directory to hold Fastbit Data */
 	uint32_t maxCol; /**< maximum number of columns per Fasbit Partition */
 	uint16_t observationDomainId;	/**< default observation domain id (overrides the one received in the records */
+  vector<string> rows; /**< row definitions */
 
+  void readRows(XMLElement* e);
 	IpfixFbWriterCfg(XMLElement*);
 };
 
