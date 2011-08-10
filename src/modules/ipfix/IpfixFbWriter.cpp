@@ -125,6 +125,8 @@ IpfixFbWriter::IpfixFbWriter( const char* dir,
                               vector<string> rows)
 {
   
+  // FIXME init tablex with parseNamesAndTypes for rows
+  
 }
 
 /**
