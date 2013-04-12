@@ -23,19 +23,19 @@
 #include "modules/ipfix/Connection.h"
 #include "common/ManagedInstance.h"
 
-#include <map>
 
-class Host : public ManagedInstance<Host> {
+
+class DistinctHost : public ManagedInstance<Host> {
 public:
-	Host(InstanceManager<Host>* im);
-	~Host();
+	Host(InstanceManager<DistinctHost>* im);
+	~DistinctHost();
 	void setIP(uint32_t address) { ip = address; }
 
 	void addConnection(Connection* c);
 
 	uint32_t ip;
 
-	//uint32_t DistinctHostIPlist[200]; // list of IP of distinct hosts this host communicate with .. salman
+	
 
 	uint32_t answeredFlows;
 	uint32_t unansweredFlows;
@@ -52,8 +52,6 @@ public:
 
 	uint64_t lastSeen;
 
-	typedef std::map<uint32_t, DistinctHost*> DistinctHostMap;
-	DistinctHostMap distincthostMap;
 };
 
 #endif

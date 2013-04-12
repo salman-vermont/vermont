@@ -67,6 +67,7 @@ void HostStatistics::onDataRecord(IpfixDataRecord* record)
 			it = hostMap.insert(pair<uint32_t, Host*>(conn.srcIP, h)).first;
 		}
 		it->second->addConnection(&conn);
+		std::cout << "src to dest" << std::endl; //salman
 	} 
 	if ((addrFilter == "dst" || addrFilter == "both") && ((conn.dstIP&netAddr) == netAddr)) {
 		it = hostMap.find(conn.dstIP);
@@ -76,7 +77,13 @@ void HostStatistics::onDataRecord(IpfixDataRecord* record)
 			it = hostMap.insert(pair<uint32_t, Host*>(conn.dstIP, h)).first;
 		} 
 		it->second->addConnection(&conn);
+		std::cout << "dst to src" << std::endl; // salman
 	}
+	
+	// output every flow on the standard output ** Salman***
+	
+	std::cout << "src ip " << IPToString(conn.srcIP) <<"\t dstIP " << IPToString(conn.dstIP) << "\tsrcport " << conn.srcPort <<"\tdstPort "<< conn.dstPort
+		  <<"\tsentPackets " <<ntohll(conn.srcPackets)<<"\treceivedPackets " <<ntohll(conn.dstPackets)<<std::endl;  
 }
 
 void HostStatistics::onReconfiguration1()
@@ -103,6 +110,7 @@ void HostStatistics::dumpStatistics()
 			<< h->recHighPorts << " "
 			<< h->sentHighPorts << " "
 			<< h->recLowPorts << " " 
-			<< h->sentLowPorts << std::endl;
+			<< h->sentLowPorts << " "
+			<< std::endl;
 	}
 }
