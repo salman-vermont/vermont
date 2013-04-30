@@ -26,11 +26,13 @@
 #include "modules/ipfix/IpfixRecordDestination.h"
 #include "Host.h"
 
+//#include <SrcDstIP.h>
+
 
 class HostStatistics : public IpfixRecordDestination, public Module, public Source<NullEmitable*>
 {
 public:
-	HostStatistics(std::string ipSubnet, std::string addrFilter, std::string logPath, uint16_t logInt);
+	HostStatistics(std::string ipSubnet, std::string addrFilter, std::string logPath, uint16_t logInt, uint16_t classificationThrldCli, double classificationThrldSrc, uint16_t classificationThrldNoOfFlows );
 	virtual ~HostStatistics();
 	void onDataRecord(IpfixDataRecord* record);
 
@@ -50,6 +52,20 @@ private:
 	time_t logTimer;
 	typedef std::map<uint32_t, Host*> HostMap;
 	HostMap hostMap;
+	uint16_t classificationThrldCli;
+	double classificationThrldSrc;
+	uint16_t classificationThrldNoOfFlows;
+	
+
+
+
+	typedef std::map<uint64_t, Host*> DistinctHostMap;
+	DistinctHostMap distincthostMap;
 };
 
+
+
 #endif /* HOSTSTATISTICS_H_ */
+
+
+	

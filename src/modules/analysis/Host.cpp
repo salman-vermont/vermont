@@ -36,6 +36,7 @@ Host::~Host()
 void Host::addConnection(Connection* c)
 {
 	if (c->srcIP != ip && c->dstIP != ip) {
+		std::cout << "src ip " << IPToString(c->srcIP) <<"\t dstIP " << IPToString(c->dstIP) << "my IP " << IPToString(ip)<<endl;
 		msg(MSG_ERROR, "Host: Received a connection that from %u to %u. However, my IP address is %u", c->srcIP, c->dstIP, ip);
 		return;
 	}
@@ -65,6 +66,34 @@ void Host::addConnection(Connection* c)
 			recHighPorts++;
 		}
 		lastSeen = c->srcTimeEnd;
+//***********************************************************************
+// keep the record of distinct port numbers
+		//scr ports record
+		int i;
+		for ( i = 0; i<=noOfDistinctSrcPorts; i++) {
+			if (srcPortRecord[i] == c->srcPort){
+				break;
+			}
+		}
+		if (i>noOfDistinctSrcPorts){
+			srcPortRecord[noOfDistinctSrcPorts] = c->srcPort;
+			noOfDistinctSrcPorts ++;
+		}
+		//dest port records
+		for ( i = 0; i<=noOfDistinctDstPorts; i++) {
+			if (dstPortRecord[i] == c->dstPort){
+				break;
+			}
+		}
+		if (i>noOfDistinctDstPorts){
+			dstPortRecord[noOfDistinctDstPorts] = c->dstPort;
+			noOfDistinctDstPorts ++;
+		}
+
+		
+		
+				
+				
 	} else {
 		sentPackets += ntohll(c->dstPackets);
 		sentBytes   += ntohll(c->dstOctets);
@@ -82,5 +111,28 @@ void Host::addConnection(Connection* c)
 			sentHighPorts++;
 		}
 		lastSeen = c->dstTimeEnd;
+//***********************************************************************
+// keep the record of distinct port numbers
+		//scr ports record
+		int i;
+		for ( i = 0; i<=noOfDistinctSrcPorts; i++) {
+			if (srcPortRecord[i] == c->dstPort){
+				break;
+			}
+		}
+		if (i>noOfDistinctSrcPorts){
+			srcPortRecord[noOfDistinctSrcPorts] = c->dstPort;
+			noOfDistinctSrcPorts ++;
+		}
+		//dest port records
+		for ( i = 0; i<=noOfDistinctDstPorts; i++) {
+			if (dstPortRecord[i] == c->srcPort){
+				break;
+			}
+		}
+		if (i>noOfDistinctDstPorts){
+			dstPortRecord[noOfDistinctDstPorts] = c->srcPort;
+			noOfDistinctDstPorts ++;
+		}
 	}
 }
