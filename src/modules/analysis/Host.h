@@ -23,7 +23,6 @@
 #include "modules/ipfix/Connection.h"
 #include "common/ManagedInstance.h"
 
-#include <map>
 
 class Host : public ManagedInstance<Host> {
 public:
@@ -52,8 +51,23 @@ public:
 
 	uint64_t lastSeen;
 
-	typedef std::map<uint32_t, DistinctHost*> DistinctHostMap;
-	DistinctHostMap distincthostMap;
+	uint16_t srcPortRecord[10000];
+	uint16_t dstPortRecord[10000];
+	
+	uint16_t noOfDistinctSrcPorts;
+	uint16_t noOfDistinctDstPorts;
+
+
 };
 
+class SrcDstIP {
+	public:
+		uint32_t SrcIP;
+		uint32_t DstIP;
+	};
+
+
+
 #endif
+
+

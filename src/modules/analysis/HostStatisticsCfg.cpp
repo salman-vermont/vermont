@@ -28,6 +28,9 @@ HostStatisticsCfg::HostStatisticsCfg(XMLElement* elem) : CfgHelper<HostStatistic
 		addrFilter = get("addrFilter");
 		logPath = get("logPath");
 		logInt = (uint16_t)getInt("logInterval", 10);
+		classificationThrldCli = (uint16_t)getInt("classificationThrldCli", 1);
+		classificationThrldSrc = (uint16_t)getDouble("classificationThrldSrc", 1);
+		classificationThrldNoOfFlows = (uint16_t)getInt("classificationThrldNoOfFlows", 1);
 	} catch(IllegalEntry ie) {
 		THROWEXCEPTION("Illegal hostStatistics entry in config file");
 	}
@@ -48,7 +51,7 @@ HostStatisticsCfg* HostStatisticsCfg::create(XMLElement* e)
 HostStatistics* HostStatisticsCfg::createInstance()
 {
 	if (!instance) {
-		instance = new HostStatistics(ipSubnet, addrFilter, logPath, logInt);
+		instance = new HostStatistics(ipSubnet, addrFilter, logPath, logInt, classificationThrldCli,classificationThrldSrc,classificationThrldNoOfFlows);
 	}
 	return instance;
 }

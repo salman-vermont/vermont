@@ -44,12 +44,19 @@ protected:
 	std::string getAddrFilter() { return addrFilter; }
 	std::string getLogPath() { return logPath; }
 	uint16_t getLogIntervall() { return logInt; }
+	uint16_t getClassificationThrldCli() { return classificationThrldCli; }
+	double getClassificationThrldSrc() { return classificationThrldSrc; }
+	uint16_t getClassificationThrldNoOfFlows() { return classificationThrldNoOfFlows; }
 
 private:
 	std::string ipSubnet;
 	std::string addrFilter;
 	std::string logPath;
 	uint16_t logInt;
+	uint16_t classificationThrldCli;
+	double classificationThrldSrc;
+	uint16_t classificationThrldNoOfFlows;
+	
 };
 
 #endif /* HOSTSTATISTICSCFG_H_ */
